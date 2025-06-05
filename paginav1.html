@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Avances del Proyecto</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #ff6f00;
+      color: white;
+      padding: 25px 10px;
+    }
+
+    section {
+      padding: 20px;
+      margin: 10px auto;
+      max-width: 900px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(255, 111, 0, 0.2);
+    }
+
+    h2, h3 {
+      color: #ff6f00;
+    }
+
+    .unidad {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .unidad button {
+      background: #ff6f00;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .unidad-content {
+      display: none;
+      padding: 10px 20px;
+      background: #fff3e0;
+      border-left: 3px solid #ff6f00;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .semana {
+      margin-bottom: 15px;
+    }
+
+    a {
+      color: #e65100;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #ffcc80;
+      text-align: center;
+      padding: 15px;
+      color: #4e342e;
+      font-size: 0.9em;
+      border-top: 3px solid #ff6f00;
+    }
+
+    .subir-doc {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DESARROLLO DE TESIS II</h1>
+  </header>
+
+  <section>
+    <h2>Asesor del Proyecto</h2>
+    <p><strong>Nombre:</strong> VEGA HUERTA Hugo Froilán</p>
+    <p><strong>Email:</strong> hvegah@autonoma.edu.pe</p>
+  </section>
+
+  <section>
+    <h2>Detalles del Curso</h2>
+    <p><strong>Curso:</strong> Desarrollo De Tesis II</p>
+    <p><strong>Semestre:</strong> 2025-I</p>
+    <p><strong>Grupo:</strong> Grupo 1</p>
+    <p><strong>Integrantes:</strong></p>
+    <ul>
+      <li>COLOS MOCHCCO Luis (ORCID: 0009-0000-9682-5856)</li>
+      <li>QUICAÑO ESCALANTE, Luis Alberto (ORCID: 0009-0009-0832-3553)</li>
+      <li>SÁNCHEZ BARCHI, Claudio Javier (ORCID: 0000-0001-6845-7865)</li>
+    </ul>
+  </section>
+
+  <section id="contenedor-unidades">
+    <h2>Avances Semanales</h2>
+
+    <script>
+      const unidades = [
+        {
+          nombre: "Unidad 1: Inicio del Proyecto",
+          semanas: [
+            { titulo: "Semana 1", actividad: "Revisión del problema y objetivos", entregable: "Definición del problema" },
+            { titulo: "Semana 2", actividad: "Investigación teórica", entregable: "Marco teórico" },
+            { titulo: "Semana 3", actividad: "Análisis de requerimientos", entregable: "Documento de requerimientos" },
+            { titulo: "Semana 4", actividad: "Planificación del proyecto", entregable: "Cronograma de trabajo" },
+          ]
+        },
+        {
+          nombre: "Unidad 2: Desarrollo del Proyecto",
+          semanas: [
+            { titulo: "Semana 5", actividad: "Diseño de interfaz", entregable: "Prototipo de interfaz" },
+            { titulo: "Semana 6", actividad: "Estructura de base de datos", entregable: "Modelo entidad-relación" },
+            { titulo: "Semana 7", actividad: "Configuración del entorno", entregable: "Informe técnico" },
+            { titulo: "Semana 8", actividad: "Desarrollo inicial", entregable: "Primer prototipo funcional" },
+          ]
+        },
+        {
+          nombre: "Unidad 3: Validación y Ajustes",
+          semanas: [
+            { titulo: "Semana 9", actividad: "Pruebas iniciales", entregable: "Reporte de pruebas" },
+            { titulo: "Semana 10", actividad: "Corrección de errores", entregable: "Bitácora de mejoras" },
+            { titulo: "Semana 11", actividad: "Funcionalidades adicionales", entregable: "Versión mejorada" },
+            { titulo: "Semana 12", actividad: "Validación final", entregable: "Informe de validación" },
+          ]
+        },
+        {
+          nombre: "Unidad 4: Presentación Final",
+          semanas: [
+            { titulo: "Semana 13", actividad: "Preparación de la presentación", entregable: "Guion de exposición" },
+            { titulo: "Semana 14", actividad: "Revisión del informe final", entregable: "Informe corregido" },
+            { titulo: "Semana 15", actividad: "Ensayo de presentación", entregable: "Feedback de ensayo" },
+            { titulo: "Semana 16", actividad: "Presentación final", entregable: "Proyecto final entregado" },
+          ]
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const contenedor = document.getElementById("contenedor-unidades");
+        unidades.forEach((unidad, i) => {
+          const divUnidad = document.createElement("div");
+          divUnidad.className = "unidad";
+
+          const btn = document.createElement("button");
+          btn.textContent = unidad.nombre;
+          btn.onclick = function () {
+            const content = this.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+          };
+
+          const divContent = document.createElement("div");
+          divContent.className = "unidad-content";
+
+          unidad.semanas.forEach((semana, j) => {
+            const divSemana = document.createElement("div");
+            divSemana.className = "semana";
+
+            const idInput = `file-${i}-${j}`;
+            const idLink = `link-${i}-${j}`;
+
+            divSemana.innerHTML = `
+              <h3>${semana.titulo}</h3>
+              <p><strong>Actividad:</strong> ${semana.actividad}</p>
+              <p><strong>Entregable:</strong> ${semana.entregable}</p>
+              <a id="${idLink}" href="#" target="_blank" style="display:none;">📄 Ver documento</a>
+              <div class="subir-doc">
+                <input type="file" id="${idInput}" accept=".pdf,.doc,.docx,.xls,.xlsx"
+                  onchange="actualizarLink('${idInput}', '${idLink}')">
+              </div>
+            `;
+            divContent.appendChild(divSemana);
+          });
+
+          divUnidad.appendChild(btn);
+          divUnidad.appendChild(divContent);
+          contenedor.appendChild(divUnidad);
+        });
+      });
+
+      function actualizarLink(inputId, linkId) {
+        const input = document.getElementById(inputId);
+        const link = document.getElementById(linkId);
+
+        if (input.files.length > 0) {
+          const file = input.files[0];
+          const url = URL.createObjectURL(file);
+          link.href = url;
+          link.style.display = 'inline';
+        }
+      }
+    </script>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Proyecto de Curso - Universidad Autónoma del Perú</p>
+  </footer>
+</body>
+</html>
